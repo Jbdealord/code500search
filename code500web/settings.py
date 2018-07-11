@@ -25,7 +25,7 @@ SECRET_KEY = 'yf)53er*t@302t0o_8(qxy+9pp$cghk2a)%zpi#ky(r2z_%d7c'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['10.42.141.107']
+ALLOWED_HOSTS = ['localhost', '10.42.141.107']
 
 
 # Application definition
@@ -38,9 +38,6 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.sites',
-    "pinax.blog",
-    "pinax.images",
-    "pinax.templates",
 ]
 
 MIDDLEWARE = [
@@ -72,7 +69,6 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'code500web.wsgi.application'
-
 
 # Database
 # https://docs.djangoproject.com/en/1.11/ref/settings/#databases
