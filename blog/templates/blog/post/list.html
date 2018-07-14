@@ -4,9 +4,24 @@
 
 {% block content %}
     {% for post in posts %}
-       <h3 class="mt-5"><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h3>
-        <p class="small">Published {{ post.publish }} by {{ post.author }}</p>
-        <p>{{ post.body|truncatewords:25|linebreaks }}</p>
+
+	<div class="row">
+		<div class="media">
+		    <span class="media-left" style="padding: 20px;">
+		      	{% if post.thumb %}
+			        <img width="128px" height="128px" src="{{ post.thumb.url }}" alt="{{ post.title }}">
+				{% endif %}
+		    </span>
+		    <div class="media-body">
+		      <h3 class="media-heading mt-3">
+		      		<a href="{{ post.get_absolute_url }}">{{ post.title }}</a>
+		      </h3>
+		        <p class="small">Published {{ post.publish }} by {{ post.author }}</p>
+		        <p class="big"> {{ post.body|truncatewords:40|linebreaks }} </p>
+		    </div>
+		</div>
+	</div>
+       
     {% endfor %}
     {% include "pagination.html" with page=posts %}
 {% endblock %}

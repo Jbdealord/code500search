@@ -40,3 +40,6 @@ class Post(models.Model):
 
     def get_absolute_url(self):
         return reverse('blog:post_detail_view', args=[self.slug])
+
+    thumb = models.FileField(default='', upload_to='thumb')
+
