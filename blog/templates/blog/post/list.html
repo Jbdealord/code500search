@@ -9,13 +9,15 @@
 		<div class="media">
 		    <span class="media-left" style="padding: 20px;">
 		      	{% if post.thumb %}
-			        <img width="128px" height="128px" src="{{ post.thumb.url }}" alt="{{ post.title }}">
+		      		<a href="{{ post.get_absolute_url }}" title="{{ post.title }}">
+			        	<img width="128px" height="128px" src="{{ post.thumb.url }}" alt="{{ post.title }}">
+			        </a>
 				{% endif %}
 		    </span>
 		    <div class="media-body">
-		      <h3 class="media-heading mt-3">
+		      <h4 class="media-heading mt-3">
 		      		<a href="{{ post.get_absolute_url }}">{{ post.title }}</a>
-		      </h3>
+		      </h4>
 		        <p class="small">Published {{ post.publish }} by {{ post.author }}</p>
 		        <p class="big"> {{ post.body|truncatewords:40|linebreaks }} </p>
 		    </div>
