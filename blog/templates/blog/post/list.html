@@ -19,7 +19,7 @@
 		      		<a href="{{ post.get_absolute_url }}">{{ post.title }}</a>
 		      </h4>
 		        <p class="small">{{ post.publish }} by {{ post.author }}</p>
-		        <p class="big"> {{ post.body|truncatewords:40|linebreaks }} </p>
+		        <p class="big"> {{ post.body|safe|truncatewords:30|linebreaks }} </p>
 		    </div>
 		</div>
 	</div>
