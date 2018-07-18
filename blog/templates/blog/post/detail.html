@@ -1,9 +1,0 @@
-{% extends "blog/master.html" %}
-
-{% block title %}{{ post.title }}{% endblock %}
-
-{% block content %}
-   <h3 class="mt-5">{{ post.title }}</h3>
-    <p class="small">{{ post.publish }} by {{ post.author }}</p>
-    <p>{{ post.body|safe|linebreaks }}</p>
-{% endblock %}
