@@ -7,6 +7,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="Code500.info">
     <meta name="author" content="Loc Tran">
+
+    <meta property="og:title" itemprop="headline" content="{{ meta.title }}"/>
+    <meta property="og:url" itemprop="url" content="{{ meta.url }}"/>
+    <meta property="og:image" itemprop="thumbnailUrl" content="{{ meta.image }}"/>
+    <meta property="og:description" itemprop="description" content="{{ meta.body }}"/>
+    <!-- Twitter Card -->
+    <meta name="twitter:card" value="summary">
+    <meta name="twitter:url" content="{{ meta.url }}">
+    <meta name="twitter:title" content="{{ meta.title }}">
+    <meta name="twitter:description" content="{{ meta.body }}">
+    <meta name="twitter:image" content="image" content="{{ meta.image }}"/>
+    <!-- End Twitter Card -->
+
     <link rel="icon" href="/static/favicon.ico">
     <title>{% block title %}{% endblock %}</title>
     <link rel="stylesheet" href="{% static "css/bootstrap.min.css" %}">

@@ -44,3 +44,5 @@ class Post(models.Model):
 
     thumb = models.FileField(default='', upload_to='thumb')
 
+class Meta(models.Model):
+    title = ''
