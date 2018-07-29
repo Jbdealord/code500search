@@ -18,3 +18,17 @@ class DetailsView(generics.RetrieveUpdateDestroyAPIView):
 
     queryset = Bucketlist.objects.all()
     serializer_class = BucketlistSerializer
+
+class PurchaseList(generics.ListAPIView):
+    serializer_class = BucketlistSerializer
+
+    def get_queryset(self):
+        """
+        Optionally restricts the returned purchases to a given user,
+        by filtering against a `username` query parameter in the URL.
+        """
+        queryset = Bucketlist.objects.all()
+        q = self.request.query_params.get('q', None)
+        if q is not None:
+            queryset = queryset.filter(name=q)
+        return queryset    
