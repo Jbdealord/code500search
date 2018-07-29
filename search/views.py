@@ -30,5 +30,5 @@ class PurchaseList(generics.ListAPIView):
         queryset = Bucketlist.objects.all()
         q = self.request.query_params.get('q', None)
         if q is not None:
-            queryset = queryset.filter(name=q)
+            queryset = queryset.filter(name__contains=q)
         return queryset    
