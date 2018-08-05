@@ -1,9 +1,10 @@
 #!/usr/bin/python
 
 import re
+import sys
 import sqlite3
 
-keyword = 'in'
+keyword = sys.argv[1]
 # connect to blog database, retrieve all posts
 conn = sqlite3.connect('indexing.sqlite3')
 
@@ -36,6 +37,18 @@ for row in cursor:
 
    print "appear: ", arr
 
-# recount and update to index_count
+   # recount and update to index_count
+   if len(arr) > 0:
+	   cursor = conn.execute("SELECT count from index_count where post = ? and hash = ?",(row[0],keyword,))
+	   rowcount = len(cursor.fetchall())
+	   if rowcount == 0:
+		   conn.execute("INSERT INTO index_count (post,hash, count) \
+		      	VALUES (?,?,?)",(row[0],keyword,len(arr)));
+		   conn.commit()
+	   else:
+		   conn.execute("UPDATE index_count SET count = ? \
+		      	WHERE post = ? and hash = ? ",(len(arr),row[0],keyword,));
+		   conn.commit()
+
 print "Operation done successfully";
 conn.close()	
