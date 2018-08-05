@@ -14,8 +14,8 @@ for row in cursor:
    print "ID = ", row[0]
    print "title = ", row[1]
    arr = [m.start() for m in re.finditer(keyword, row[1])]
-   # check in dictionary, if not exists then insert
 
+   # check in dictionary, if not exists then insert
    cursor = conn.execute("SELECT hash from dictionary where word = ?",(keyword,))
    rowcount = len(cursor.fetchall())
    print "count = ", rowcount
@@ -23,7 +23,17 @@ for row in cursor:
    		conn.execute("INSERT INTO dictionary (hash,word) \
       	VALUES (?, ?)",(keyword,keyword,));
 		conn.commit()
-   # check in reverse_index, if not exists then insert
+
+   for idx, val in enumerate(arr):
+	   # check in reverse_index, if not exists then insert
+	   cursor = conn.execute("SELECT hash from reverse_index where hash = ? and post = ? and field = ? and start = ?",(keyword,row[0], 'title',val))
+	   rowcount = len(cursor.fetchall())
+	   if rowcount == 0:
+		   print "arr = ", idx
+		   conn.execute("INSERT INTO reverse_index (post,hash, field, start) \
+		      	VALUES (?,?,?,?)",(row[0],keyword,'title', val));
+		   conn.commit()
+
    print "appear: ", arr
 
 # recount and update to index_count
