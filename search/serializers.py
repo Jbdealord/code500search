@@ -7,5 +7,5 @@ class PostSearchSerializer(serializers.ModelSerializer):
     class Meta:
         """Meta class to map serializer's fields with the model fields."""
         model = Post
-        fields = ('id', 'title', 'created')
+        fields = ('id', 'title', 'thumb','created')
         read_only_fields = ('id', 'title', 'created')
